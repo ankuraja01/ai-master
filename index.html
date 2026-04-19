@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Course ₹499 - Limited Offer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0f19;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(90deg,#007bff,#00c6ff);
+      padding: 25px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background: #121a2b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+    }
+    .price {
+      font-size: 30px;
+      color: #00ff99;
+      font-weight: bold;
+    }
+    ul {
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 15px 25px;
+      background: #00ff99;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #00cc77;
+    }
+    .upi-box {
+      background: #0d1324;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      text-align: center;
+      border: 1px solid #00ff99;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    .highlight {
+      color: #00c6ff;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+    label {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔥 AI Mastery Course - सिर्फ ₹499 में</h1>
+  <p>Limited Offer | Instant WhatsApp Delivery</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>📘 AI Course Details</h2>
+    <p>इस course में आप सीखेंगे:</p>
+    <ul>
+      <li>AI Basics (Beginner to Advanced)</li>
+      <li>ChatGPT & Prompt Engineering</li>
+      <li>AI Tools for Business & Earning</li>
+      <li>AI Content Creation (Reels/YouTube/Instagram)</li>
+      <li>PDF Notes + Practical Guide</li>
+      <li>Bonus: AI पैसे कमाने की Strategy</li>
+    </ul>
+
+    <p class="price">Price: ₹499 Only</p>
+    <p>📌 Payment करने के बाद WhatsApp पर PDF मिल जाएगी।</p>
+  </div>
+
+  <div class="card">
+    <h2>💳 Payment करें (UPI)</h2>
+    <div class="upi-box">
+      <p><span class="highlight">UPI Number:</span> 9118162095</p>
+      <p><span class="highlight">UPI ID:</span> 9118162095@ptaxis</p>
+      <p>PhonePe / Google Pay / Paytm से payment करें</p>
+    </div>
+
+    <a class="btn" href="upi://pay?pa=9118162095@ptaxis&pn=AI%20Course%20Payment&am=499&cu=INR">
+      ✅ Pay ₹499 Now
+    </a>
+
+    <hr style="margin-top:20px; opacity:0.3;">
+
+    <h3>📩 Payment Done? WhatsApp पर भेजें</h3>
+
+    <label>आपका नाम:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label>Payment UTR / Transaction ID:</label>
+    <input type="text" id="utr" placeholder="Enter UTR number">
+
+    <a class="btn" href="#" onclick="sendWhatsApp()">
+      📲 Get PDF on WhatsApp
+    </a>
+
+    <p style="font-size:14px; opacity:0.8; margin-top:10px;">
+      Payment के बाद screenshot और UTR भेजने पर PDF तुरंत मिल जाएगी।
+    </p>
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 AI Course Store | All Rights Reserved
+</div>
+
+<script>
+  function sendWhatsApp() {
+    let name = document.getElementById("name").value;
+    let utr = document.getElementById("utr").value;
+
+    if(name.trim() === "" || utr.trim() === ""){
+      alert("कृपया अपना नाम और UTR नंबर भरें!");
+      return;
+    }
+
+    let phone = "919118162095"; 
+    let message = `Hello Sir, मैंने ₹499 AI Course का payment कर दिया है.%0A%0AName: ${name}%0AUTR/Txn ID: ${utr}%0A%0APlease मुझे PDF भेज दें।`;
+
+    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+  }
+</script>
+
+</body>
+</html>
