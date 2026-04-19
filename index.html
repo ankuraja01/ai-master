@@ -1,175 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Course ₹499 - Limited Offer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Mastery Course ₹499 | Learn AI & Earn</title>
+
   <style>
-    body {
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
       font-family: Arial, sans-serif;
-      background: #0b0f19;
-      color: white;
-      margin: 0;
-      padding: 0;
     }
-    header {
-      background: linear-gradient(90deg,#007bff,#00c6ff);
-      padding: 25px;
-      text-align: center;
+
+    body{
+      background: radial-gradient(circle at top, #0d0f1a, #05070f);
+      color:white;
+      overflow-x:hidden;
     }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
+
+    /* Animated background dots */
+    .bg{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      z-index:-1;
+      overflow:hidden;
     }
-    header p {
-      margin: 5px 0 0;
-      font-size: 16px;
+    .dot{
+      position:absolute;
+      width:4px;
+      height:4px;
+      background:#00eaff;
+      border-radius:50%;
+      opacity:0.6;
+      animation: float 8s infinite linear;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
+    @keyframes float{
+      from{ transform: translateY(100vh); }
+      to{ transform: translateY(-100vh); }
     }
-    .card {
-      background: #121a2b;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 20px;
-      box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+
+    header{
+      text-align:center;
+      padding:60px 20px;
+      background: linear-gradient(135deg, rgba(0,234,255,0.15), rgba(255,0,255,0.08));
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .price {
-      font-size: 30px;
-      color: #00ff99;
-      font-weight: bold;
+
+    header h1{
+      font-size:38px;
+      font-weight:800;
+      color:#00eaff;
+      text-shadow: 0px 0px 20px rgba(0,234,255,0.6);
     }
-    ul {
-      line-height: 1.8;
-      padding-left: 20px;
+
+    header p{
+      margin-top:10px;
+      font-size:18px;
+      opacity:0.85;
     }
-    .btn {
-      display: inline-block;
-      padding: 15px 25px;
-      background: #00ff99;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 10px;
-      margin-top: 15px;
-      transition: 0.3s;
+
+    .badge{
+      display:inline-block;
+      margin-top:20px;
+      padding:10px 18px;
+      border-radius:30px;
+      background: rgba(0,234,255,0.15);
+      border:1px solid rgba(0,234,255,0.4);
+      font-size:14px;
+      color:#00eaff;
     }
-    .btn:hover {
-      background: #00cc77;
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+      padding:20px;
     }
-    .upi-box {
-      background: #0d1324;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-      text-align: center;
-      border: 1px solid #00ff99;
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:25px;
+      margin-top:40px;
+      align-items:center;
     }
-    .footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      opacity: 0.7;
+
+    .hero-box{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding:25px;
+      border-radius:16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0px 0px 30px rgba(0,0,0,0.4);
     }
-    .highlight {
-      color: #00c6ff;
-      font-weight: bold;
+
+    .hero-box h2{
+      font-size:28px;
+      margin-bottom:12px;
+      color:#ffffff;
     }
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      margin-top: 8px;
-      font-size: 15px;
+
+    .hero-box h2 span{
+      color:#00eaff;
     }
-    label {
-      font-size: 14px;
-      opacity: 0.9;
+
+    .price{
+      font-size:40px;
+      font-weight:800;
+      color:#00ff99;
+      margin:15px 0;
+      text-shadow:0px 0px 15px rgba(0,255,153,0.4);
+    }
+
+    .strike{
+      font-size:18px;
+      opacity:0.6;
+      text-decoration: line-through;
+    }
+
+    ul{
+      margin-top:15px;
+      padding-left:20px;
+      line-height:1.8;
+      font-size:15px;
+      opacity:0.9;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 25px;
+      margin-top:18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    .btn-pay{
+      background: linear-gradient(90deg,#00eaff,#00ff99);
+      color:black;
+      box-shadow: 0px 0px 25px rgba(0,234,255,0.4);
+    }
+    .btn-pay:hover{
+      transform: scale(1.05);
+    }
+
+    .btn-whatsapp{
+      background: linear-gradient(90deg,#25D366,#00ff99);
+      color:black;
+      box-shadow: 0px 0px 25px rgba(37,211,102,0.4);
+    }
+    .btn-whatsapp:hover{
+      transform: scale(1.05);
+    }
+
+    .upi-box{
+      margin-top:15px;
+      padding:15px;
+      border-radius:12px;
+      background: rgba(0,234,255,0.08);
+      border:1px solid rgba(0,234,255,0.3);
+      text-align:center;
+      font-size:15px;
+    }
+
+    .section{
+      margin-top:60px;
+    }
+
+    .section h2{
+      text-align:center;
+      font-size:28px;
+      margin-bottom:25px;
+      color:#00eaff;
+      text-shadow:0px 0px 15px rgba(0,234,255,0.4);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      padding:18px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0px 0px 25px rgba(0,0,0,0.3);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform: translateY(-8px);
+      border:1px solid rgba(0,234,255,0.4);
+      box-shadow:0px 0px 25px rgba(0,234,255,0.15);
+    }
+
+    .card h3{
+      color:#00ff99;
+      margin-bottom:8px;
+    }
+
+    .card p{
+      font-size:14px;
+      opacity:0.85;
+      line-height:1.6;
+    }
+
+    .form-box{
+      max-width:600px;
+      margin:auto;
+      padding:25px;
+      border-radius:16px;
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.1);
+      box-shadow:0px 0px 30px rgba(0,0,0,0.4);
+      text-align:center;
+    }
+
+    input{
+      width:100%;
+      padding:14px;
+      border-radius:10px;
+      border:none;
+      margin-top:10px;
+      font-size:15px;
+      outline:none;
+    }
+
+    footer{
+      text-align:center;
+      padding:25px;
+      opacity:0.7;
+      margin-top:50px;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{
+        grid-template-columns: 1fr;
+      }
+      .grid{
+        grid-template-columns: 1fr;
+      }
+      header h1{
+        font-size:30px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>🔥 AI Mastery Course - सिर्फ ₹499 में</h1>
-  <p>Limited Offer | Instant WhatsApp Delivery</p>
-</header>
+  <!-- Animated Background -->
+  <div class="bg" id="bg"></div>
 
-<div class="container">
+  <header>
+    <h1>⚡ AI Mastery Course</h1>
+    <p>Learn AI + Earn Online | PDF + Tools + Secrets</p>
+    <div class="badge">🔥 Limited Offer Only ₹499</div>
+  </header>
 
-  <div class="card">
-    <h2>📘 AI Course Details</h2>
-    <p>इस course में आप सीखेंगे:</p>
-    <ul>
-      <li>AI Basics (Beginner to Advanced)</li>
-      <li>ChatGPT & Prompt Engineering</li>
-      <li>AI Tools for Business & Earning</li>
-      <li>AI Content Creation (Reels/YouTube/Instagram)</li>
-      <li>PDF Notes + Practical Guide</li>
-      <li>Bonus: AI पैसे कमाने की Strategy</li>
-    </ul>
+  <div class="container">
 
-    <p class="price">Price: ₹499 Only</p>
-    <p>📌 Payment करने के बाद WhatsApp पर PDF मिल जाएगी।</p>
-  </div>
+    <div class="hero">
+      <div class="hero-box">
+        <h2>Become an <span>AI Expert</span> in 7 Days 🚀</h2>
+        <p style="margin-top:10px; opacity:0.85; line-height:1.7;">
+          यह course आपको AI का पूरा practical ज्ञान देगा जिससे आप  
+          content creation, freelancing, business automation और earning कर सकते हैं।
+        </p>
 
-  <div class="card">
-    <h2>💳 Payment करें (UPI)</h2>
-    <div class="upi-box">
-      <p><span class="highlight">UPI Number:</span> 9118162095</p>
-      <p><span class="highlight">UPI ID:</span> 9118162095@ptaxis</p>
-      <p>PhonePe / Google Pay / Paytm से payment करें</p>
+        <p class="strike">Old Price ₹1999</p>
+        <p class="price">₹499</p>
+
+        <a class="btn btn-pay" href="upi://pay?pa=9118162095@ptaxis&pn=AI%20Course%20Payment&am=499&cu=INR">
+          💳 Pay Now ₹499
+        </a>
+
+        <div class="upi-box">
+          <p><b>UPI Number:</b> 9118162095</p>
+          <p><b>UPI ID:</b> 9118162095@ptaxis</p>
+        </div>
+
+      </div>
+
+      <div class="hero-box">
+        <h2>📌 Course Includes</h2>
+        <ul>
+          <li>AI Basics + ChatGPT Mastery</li>
+          <li>Prompt Engineering Secret Tricks</li>
+          <li>AI Tools for Instagram & YouTube</li>
+          <li>AI Content Generator Methods</li>
+          <li>AI से पैसे कमाने की Strategy</li>
+          <li>Premium PDF Notes + Bonus</li>
+        </ul>
+
+        <p style="margin-top:15px; opacity:0.85;">
+          ✅ Payment के बाद WhatsApp पर PDF Delivery मिलेगी।
+        </p>
+      </div>
     </div>
 
-    <a class="btn" href="upi://pay?pa=9118162095@ptaxis&pn=AI%20Course%20Payment&am=499&cu=INR">
-      ✅ Pay ₹499 Now
-    </a>
+    <!-- Why section -->
+    <div class="section">
+      <h2>🔥 Why This AI Course?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>⚡ Fast Learning</h3>
+          <p>Beginners के लिए आसान भाषा में step-by-step AI सीखें।</p>
+        </div>
+        <div class="card">
+          <h3>💰 Earning Method</h3>
+          <p>AI से earning कैसे करें freelancing, reels, business में।</p>
+        </div>
+        <div class="card">
+          <h3>📘 PDF + Bonus</h3>
+          <p>Premium PDF notes, prompts, tools list और extra bonus files।</p>
+        </div>
+      </div>
+    </div>
 
-    <hr style="margin-top:20px; opacity:0.3;">
+    <!-- Testimonials -->
+    <div class="section">
+      <h2>⭐ Student Reviews</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Rahul (Delhi)</h3>
+          <p>"बहुत शानदार course है, AI tools clear हो गए।"</p>
+        </div>
+        <div class="card">
+          <h3>Neha (Mumbai)</h3>
+          <p>"Prompt engineering समझ में आ गया, reels बनाने में help मिली।"</p>
+        </div>
+        <div class="card">
+          <h3>Amit (UP)</h3>
+          <p>"499 में इतना content best है, earning tricks भी real हैं।"</p>
+        </div>
+      </div>
+    </div>
 
-    <h3>📩 Payment Done? WhatsApp पर भेजें</h3>
+    <!-- FAQ -->
+    <div class="section">
+      <h2>❓ FAQ</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>PDF कैसे मिलेगा?</h3>
+          <p>Payment के बाद WhatsApp पर message भेजने पर PDF मिलेगा।</p>
+        </div>
+        <div class="card">
+          <h3>Course Beginners के लिए है?</h3>
+          <p>हाँ, बिल्कुल beginner friendly है और easy Hindi में है।</p>
+        </div>
+        <div class="card">
+          <h3>Lifetime Access रहेगा?</h3>
+          <p>हाँ, PDF आपकी permanently रहेगी और bonus भी मिलेगा।</p>
+        </div>
+      </div>
+    </div>
 
-    <label>आपका नाम:</label>
-    <input type="text" id="name" placeholder="Enter your name">
+    <!-- WhatsApp Form -->
+    <div class="section">
+      <h2>📲 Get PDF on WhatsApp</h2>
+      <div class="form-box">
 
-    <label>Payment UTR / Transaction ID:</label>
-    <input type="text" id="utr" placeholder="Enter UTR number">
+        <p style="opacity:0.85; margin-bottom:15px;">
+          Payment करने के बाद अपना नाम और UTR डालें, फिर WhatsApp पर भेजें।
+        </p>
 
-    <a class="btn" href="#" onclick="sendWhatsApp()">
-      📲 Get PDF on WhatsApp
-    </a>
+        <input type="text" id="name" placeholder="Enter your Name">
+        <input type="text" id="utr" placeholder="Enter UTR / Transaction ID">
 
-    <p style="font-size:14px; opacity:0.8; margin-top:10px;">
-      Payment के बाद screenshot और UTR भेजने पर PDF तुरंत मिल जाएगी।
-    </p>
+        <a class="btn btn-whatsapp" href="#" onclick="sendWhatsApp()">
+          ✅ Send Details on WhatsApp
+        </a>
+
+      </div>
+    </div>
+
   </div>
 
-</div>
+  <footer>
+    © 2026 AI Mastery Course | Powered by Ankuraja01 | All Rights Reserved
+  </footer>
 
-<div class="footer">
-  © 2026 AI Course Store | All Rights Reserved
-</div>
+  <script>
+    // WhatsApp function
+    function sendWhatsApp() {
+      let name = document.getElementById("name").value;
+      let utr = document.getElementById("utr").value;
 
-<script>
-  function sendWhatsApp() {
-    let name = document.getElementById("name").value;
-    let utr = document.getElementById("utr").value;
+      if (name.trim() === "" || utr.trim() === "") {
+        alert("कृपया Name और UTR दोनों भरें!");
+        return;
+      }
 
-    if(name.trim() === "" || utr.trim() === ""){
-      alert("कृपया अपना नाम और UTR नंबर भरें!");
-      return;
+      let phone = "919118162095";
+      let message = `Hello Sir, मैंने ₹499 AI Mastery Course का payment कर दिया है.%0A%0AName: ${name}%0AUTR/Txn ID: ${utr}%0A%0APlease मुझे PDF भेज दें।`;
+
+      window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
     }
 
-    let phone = "919118162095"; 
-    let message = `Hello Sir, मैंने ₹499 AI Course का payment कर दिया है.%0A%0AName: ${name}%0AUTR/Txn ID: ${utr}%0A%0APlease मुझे PDF भेज दें।`;
-
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-  }
-</script>
+    // Create animated dots
+    const bg = document.getElementById("bg");
+    for(let i=0;i<80;i++){
+      let dot = document.createElement("div");
+      dot.className = "dot";
+      dot.style.left = Math.random() * 100 + "vw";
+      dot.style.top = Math.random() * 100 + "vh";
+      dot.style.animationDuration = (5 + Math.random() * 8) + "s";
+      dot.style.opacity = Math.random();
+      bg.appendChild(dot);
+    }
+  </script>
 
 </body>
 </html>
