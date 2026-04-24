@@ -139,6 +139,7 @@
       font-size:16px;
       transition:0.3s;
       cursor:pointer;
+      border:none;
     }
 
     .btn-pay{
@@ -159,6 +160,17 @@
       transform: scale(1.05);
     }
 
+    .btn-copy{
+      background: rgba(255,255,255,0.08);
+      color:white;
+      border:1px solid rgba(255,255,255,0.2);
+      margin-top:10px;
+      width:100%;
+    }
+    .btn-copy:hover{
+      background: rgba(255,255,255,0.15);
+    }
+
     .upi-box{
       margin-top:15px;
       padding:15px;
@@ -167,23 +179,6 @@
       border:1px solid rgba(0,234,255,0.3);
       text-align:center;
       font-size:15px;
-    }
-
-    /* QR box */
-    .qr-box{
-      margin-top:18px;
-      padding:18px;
-      border-radius:14px;
-      background: rgba(0,255,153,0.07);
-      border:1px solid rgba(0,255,153,0.25);
-      text-align:center;
-    }
-
-    .qr-box img{
-      width:200px;
-      border-radius:12px;
-      margin-top:10px;
-      box-shadow:0px 0px 25px rgba(0,255,153,0.25);
     }
 
     .section{
@@ -266,6 +261,67 @@
       line-height:1.6;
     }
 
+    /* Payment Modal */
+    .modal{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.75);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+      padding:15px;
+    }
+
+    .modal-content{
+      max-width:420px;
+      width:100%;
+      background: rgba(20, 20, 35, 0.95);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:18px;
+      padding:22px;
+      text-align:center;
+      box-shadow:0px 0px 40px rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      animation: popup 0.3s ease-in-out;
+    }
+
+    @keyframes popup{
+      from{transform:scale(0.8); opacity:0;}
+      to{transform:scale(1); opacity:1;}
+    }
+
+    .modal-content h2{
+      font-size:22px;
+      color:#00ff99;
+      margin-bottom:10px;
+    }
+
+    .modal-content p{
+      font-size:14px;
+      opacity:0.85;
+      margin-bottom:10px;
+      line-height:1.5;
+    }
+
+    .modal-content img{
+      width:220px;
+      border-radius:14px;
+      margin-top:12px;
+      box-shadow:0px 0px 25px rgba(0,255,153,0.25);
+    }
+
+    .close-btn{
+      float:right;
+      cursor:pointer;
+      font-size:20px;
+      font-weight:bold;
+      color:#ff4d4d;
+    }
+
     /* Responsive */
     @media(max-width:900px){
       .hero{
@@ -305,30 +361,18 @@
         <p class="strike">Old Price ₹4999</p>
         <p class="price">₹499</p>
 
-        <a class="btn btn-pay" href="upi://pay?pa=9118162095@ptaxis&pn=AI%20Data%20Science%20Course&am=499&cu=INR">
-          💳 Pay Now ₹499
-        </a>
+        <!-- REGISTER NOW BUTTON -->
+        <button class="btn btn-pay" onclick="openPaymentModal()">
+          🚀 Register Now & Pay ₹499
+        </button>
 
         <div class="upi-box">
           <p><b>UPI Number:</b> 9118162095</p>
-          <p><b>UPI ID:</b> 9118162095@ptaxis</p>
+          <p><b>UPI ID:</b> <span id="upiIdText">9118162095@ptaxis</span></p>
           <p style="margin-top:8px; font-size:14px; opacity:0.85;">
-            Payment के बाद नीचे form भरकर WhatsApp पर message भेजें।
+            Register Now पर click करके payment popup open होगा।
           </p>
         </div>
-
-        <!-- QR Code Section -->
-        <div class="qr-box">
-          <h3 style="color:#00ff99;">📌 Scan & Pay QR</h3>
-          <p style="opacity:0.85; margin-top:6px;">PhonePe / Google Pay / Paytm से Scan करें</p>
-
-          <img id="qrImage" src="" alt="UPI QR Code">
-
-          <p style="margin-top:10px; font-size:13px; opacity:0.8;">
-            QR से payment करने के बाद WhatsApp पर details भेजें।
-          </p>
-        </div>
-
       </div>
 
       <div class="hero-box">
@@ -420,9 +464,9 @@
         <input type="text" id="name" placeholder="Enter your Name (Required)">
         <input type="text" id="utr" placeholder="Enter UTR / Transaction ID (Optional)">
 
-        <a class="btn btn-whatsapp" onclick="sendWhatsApp()">
+        <button class="btn btn-whatsapp" onclick="sendWhatsApp()">
           ✅ Send Details on WhatsApp
-        </a>
+        </button>
 
         <p class="note">
           📌 WhatsApp पर payment screenshot भी भेज दें, PDF तुरंत मिल जाएगी।
@@ -437,7 +481,67 @@
     © 2026 AI + Data Science Mastery | Powered by ankuraja01 | All Rights Reserved
   </footer>
 
+
+  <!-- PAYMENT MODAL -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePaymentModal()">✖</span>
+
+      <h2>💳 Pay ₹499 Now</h2>
+      <p>Scan QR or click below to open payment app.</p>
+
+      <p><b>UPI ID:</b> <span id="upiText">9118162095@ptaxis</span></p>
+      <button class="btn btn-copy" onclick="copyUPI()">📌 Copy UPI ID</button>
+
+      <img id="qrImage" src="" alt="UPI QR Code">
+
+      <a class="btn btn-pay" id="payLink" href="#" style="display:block; margin-top:15px;">
+        ✅ Pay Using UPI App
+      </a>
+
+      <p style="margin-top:12px; font-size:13px; opacity:0.75;">
+        Payment के बाद WhatsApp पर नाम + screenshot भेजें।
+      </p>
+    </div>
+  </div>
+
+
   <script>
+    // UPI Link (Updated)
+    const upiLink = "upi://pay?pa=9118162095@ptaxis&pn=AI%20Data%20Science%20Course&am=499&cu=INR";
+
+    // Modal open
+    function openPaymentModal(){
+      document.getElementById("paymentModal").style.display="flex";
+
+      // QR Generator
+      const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(upiLink);
+      document.getElementById("qrImage").src = qrUrl;
+
+      // Payment button link
+      document.getElementById("payLink").href = upiLink;
+    }
+
+    // Modal close
+    function closePaymentModal(){
+      document.getElementById("paymentModal").style.display="none";
+    }
+
+    // Copy UPI ID
+    function copyUPI(){
+      const upi = "9118162095@ptaxis";
+      navigator.clipboard.writeText(upi);
+      alert("✅ UPI ID Copied: " + upi);
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event){
+      let modal = document.getElementById("paymentModal");
+      if(event.target == modal){
+        modal.style.display="none";
+      }
+    }
+
     // WhatsApp function (UTR optional)
     function sendWhatsApp() {
       let name = document.getElementById("name").value;
@@ -465,11 +569,6 @@
       dot.style.opacity = Math.random();
       bg.appendChild(dot);
     }
-
-    // QR Generator (UPI QR)
-    const upiLink = "upi://pay?pa=9118162095@ptaxis&pn=AI%20Data%20Science%20Course&am=499&cu=INR";
-    const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(upiLink);
-    document.getElementById("qrImage").src = qrUrl;
   </script>
 
 </body>
